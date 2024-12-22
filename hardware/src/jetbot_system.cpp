@@ -42,13 +42,11 @@ hardware_interface::CallbackReturn JetBotSystemHardware::on_init(
                       std::numeric_limits<double>::quiet_NaN());
 
   for (auto i = 0u; i < info_.joints.size(); i++) {
-    auto pin_en_ =
-        stoi(info_.hardware_parameters["pin_enable_" + std::to_string(i)]);
     auto pin_pos_ =
         stoi(info_.hardware_parameters["pin_pos_" + std::to_string(i)]);
     auto pin_neg_ =
         stoi(info_.hardware_parameters["pin_neg_" + std::to_string(i)]);
-    motor_pin_sets_.emplace_back(std::make_tuple(pin_en_, pin_pos_, pin_neg_));
+    motor_pin_sets_.emplace_back(std::make_tuple(pin_pos_, pin_neg_));
   }
 
   for (const hardware_interface::ComponentInfo &joint : info_.joints) {

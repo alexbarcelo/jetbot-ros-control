@@ -9,18 +9,13 @@ using namespace jetbot_control;
 
 Motor::Motor(I2CDevicePtr i2c, MotorPins pins, std::string name)
     : i2c_{i2c}, pins_{pins}, name_{name} {
-  u8 enable_pin = std::get<0>(pins_);
-  if (!i2c_->tryEnableMotor(enable_pin)) {
-    std::string error = "Failed to enable motor " + name_ + "!";
-    std::__throw_runtime_error(error.c_str());
-  }
 }
 
 Motor::~Motor() { trySetVelocity(0); }
 
 bool Motor::trySetVelocity(double velocity) {
-  u8 pos_pin = std::get<1>(pins_);
-  u8 neg_pin = std::get<2>(pins_);
+  u8 pos_pin = std::get<0>(pins_);
+  u8 neg_pin = std::get<1>(pins_);
 
   // Interpret <1/1000 max speed as not spinning
   if (std::fabs(velocity) < 0.001) {

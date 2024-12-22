@@ -12,10 +12,8 @@ class TestJetBotSystem : public ::testing::Test {
   <ros2_control name="MockJetBotSystemHardware" type="system">
     <hardware>
       <plugin>jetbot_control/JetBotSystemHardware</plugin>
-      <param name="pin_enable_0">1</param>
       <param name="pin_pos_0">2</param>
       <param name="pin_neg_0">3</param>
-      <param name="pin_enable_1">4</param>
       <param name="pin_pos_1">5</param>
       <param name="pin_neg_1">6</param>
     </hardware>

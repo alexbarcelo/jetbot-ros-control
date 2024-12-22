@@ -10,7 +10,7 @@
 
 using u8 = uint8_t;
 using I2CDevicePtr = std::shared_ptr<jetbot_control::I2CDevice>;
-using MotorPins = std::tuple<u8, u8, u8>;
+using MotorPins = std::tuple<u8, u8>;
 
 namespace jetbot_control {
 class Motor {
